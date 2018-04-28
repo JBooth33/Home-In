@@ -15,11 +15,26 @@ $(document).ready(function () {
     //  variable to reference firebase 
     var database = firebase.database();
 
+    //Hides content until called
+    $("#search-Form").hide();
+
     // variable to reference Firebase
     var username = "";
     var neighborhood = "";
     var street = "";
     var zip = "";
+
+
+    ///////////////////////Functions////////////////////////
+
+    function submitButton() {
+        //Hides email form
+        $("#email-Form").hide();
+
+        //Unhides search form
+        $("#search-Form").show();
+
+    }
 
     // on click function on the username field to display submit button
     $("body").on("click", "#submit-Btn", function () {
@@ -40,8 +55,9 @@ $(document).ready(function () {
         // empty the form everytime after user click submit
         $("#email-Input").val("");
 
-
         // transition for next page (div) - Seach page ----- .show and .replace functions
+        submitButton();
+
 
     });
     
