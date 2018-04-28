@@ -40,9 +40,13 @@ h1, h2, h3, p {
     border: none;
 }
 
+#email-Input {
+    color: #707070;
+}
+
 #submit-Btn {
     background-color: #FFB401;
-    color: #EFEBE0;
+    color:#147A86;
     border: none;
 }
 
@@ -51,6 +55,6 @@ h1, h2, h3, p {
 
 /************* Footer **************/
 .footer {
-    position: absolute;
+    background-color: #147A86;
 
 }
