@@ -9,7 +9,7 @@
 
     <!--Styles-->
     <!--Google Font-->
-    <link href="https://fonts.googleapis.com/css?family=Dosis:200,300,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Dosis:200,700" rel="stylesheet">
 
     <!--Bootstrap-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
@@ -26,6 +26,13 @@
 
     <!--Scripts-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
 
     <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
 
@@ -63,7 +70,8 @@
             </div>
         </div>
 
-        <br><br>
+        <br>
+        <br>
 
         <!--Email Form-->
         <div class="row">
@@ -80,7 +88,8 @@
             </div>
         </div>
 
-        <br><br>
+        <br>
+        <br>
 
         <!--Text about what this app is about-->
         <div class="row">
@@ -103,7 +112,8 @@
             </div>
         </div>
 
-        <br><br>
+        <br>
+        <br>
 
         <!--Search Form-->
         <div class="row">
@@ -123,13 +133,98 @@
                             <option>South</option>
                         </select>
                         <button type="submit" class="btn btn-primary" id="search-Btn">Submit</button>
-                        <button type="submit" class="btn btn-primary" id="reset-Btn">Reset</button>
                     </div>
                 </form>
             </div>
         </div>
 
-        <br><br>
+        <br>
+        <br>
+
+    </div>
+
+
+    <!--API Results / Listings-->
+    <div class="container content-div" id="listings-Results">
+        <div class="row" id="image-Carousel">
+            <div class="col-sm-12">
+
+                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                    </ol>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img class="d-block w-100" src="assets/images/logo.png" alt="First slide">
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12">
+
+                <!--Makes sure that the hr tag is the same width as the listing address-->
+                <div>
+                    <h2 id="listing-Address"></h2>
+
+                    <hr id="listing-Underline">
+                </div>
+
+                <h3>Details</h3>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <p>Asking Price</p>
+                    <p>Zestimate</p>
+                    <p>Bedrooms</p>
+                    <p>Baths</p>
+                    <p>Year Built</p>
+                    <p>Mortage Est.</p>
+                </div>
+                <div class="col-sm-6">
+                    <p id="asking-Price"></p>
+                    <hr>
+
+                    <p id="zestimate"></p>
+                    <hr>
+
+                    <p id="bedrooms"></p>
+                    <hr>
+
+                    <pid="baths">
+                        </p>
+                        <hr>
+
+                        <p id="year-Built"></p>
+                        <hr>
+
+                        <p id="mortage-Est"></p>
+                        <hr>
+
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="row">
+            <div class="col-sm-12">
+
+            </div>
+        </div>
 
     </div>
 
@@ -148,6 +243,7 @@
 
     <!--Script-->
     <script type="text/javascript" src="assets/javascript/app.js"></script>
+
 
 </body>
 
