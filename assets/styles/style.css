@@ -1,0 +1,56 @@
+body {
+    background-color: #EFEBE0;
+    height: 100%;
+    /* background: url("../images/form-background.png");    */
+}
+
+h1, h2, h3, p {
+   font-family: 'Dosis', sans-serif; 
+   font-weight: 300;
+   color: #EFEBE0;
+}
+
+
+/************* NavBar **************/
+.navbar {
+    margin-bottom: 100px;
+}
+
+.icon {
+    color: #707070;
+}
+
+
+/************* Main Content **************/
+.content-div {
+    width: 60%;
+    margin-bottom: 100px;
+    background-color: #147A86;
+    padding: 50px;
+    border-radius: 10px;
+}
+
+.content-div h1 {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.form-control {
+    background-color: #FFB401;
+    border: none;
+}
+
+#submit-Btn {
+    background-color: #FFB401;
+    color: #EFEBE0;
+    border: none;
+}
+
+
+
+
+/************* Footer **************/
+.footer {
+    position: absolute;
+
+}
