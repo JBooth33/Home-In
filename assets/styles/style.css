@@ -44,11 +44,13 @@ h1, h2, h3, p {
     color: #707070;
 }
 
-#submit-Btn {
+#submit-Btn, #search-Btn, #reset-Btn {
     background-color: #FFB401;
     color:#147A86;
     border: none;
 }
+
+
 
 
 

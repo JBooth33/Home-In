@@ -8,15 +8,21 @@
 
 
     <!--Styles-->
+    <!--Google Font-->
+    <link href="https://fonts.googleapis.com/css?family=Dosis:200,300,700" rel="stylesheet">
+
+    <!--Bootstrap-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
         crossorigin="anonymous">
+
+    <!--Linked Styles-->
     <link rel="stylesheet" type="text/css" href="assets/styles/reset.css">
     <link rel="stylesheet" type="text/css" href="assets/styles/style.css">
 
-    <link href="https://fonts.googleapis.com/css?family=Dosis:200,300,700" rel="stylesheet">
-
+    <!--Glyphicons-->
     <link href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg"
         rel="stylesheet" crossorigin="anonymous">
+
 
     <!--Scripts-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -47,8 +53,8 @@
         </a>
     </nav>
 
-    <!--Main Content Section-->
-    <div class="container content-div">
+    <!--Email Form Section.  Loads with the page, will be hidden when submit is clicked-->
+    <div class="container content-div" id="email-Form">
 
         <!--Welcome Title-->
         <div class="row">
@@ -57,7 +63,9 @@
             </div>
         </div>
 
-        <!--Email Address Form-->
+        <br><br>
+
+        <!--Email Form-->
         <div class="row">
             <div class="col-sm-12">
                 <form>
@@ -72,8 +80,7 @@
             </div>
         </div>
 
-        <br>
-        <br>
+        <br><br>
 
         <!--Text about what this app is about-->
         <div class="row">
@@ -82,6 +89,50 @@
             </div>
         </div>
     </div>
+
+
+
+
+    <!--Search FormSection.  Loads when the submit button is clicked.  Will be hidden when search is clicked-->
+    <div class="container content-div" id="search-Form">
+
+        <!--Welcome Title-->
+        <div class="row">
+            <div class="col-sm-12">
+                <h1>Search for Places</h1>
+            </div>
+        </div>
+
+        <br><br>
+
+        <!--Search Form-->
+        <div class="row">
+            <div class="col">
+                <form>
+                    <div class="form-group">
+                        <select id="city-Input" class="form-control">
+                            <option selected>Select a City</option>
+                            <option>Minneapolis</option>
+                        </select>
+                        <select id="neighborhood-Input" class="form-control">
+                            <option selected>Neighborhood</option>
+                            <option>Uptown</option>
+                            <option>Downtown</option>
+                            <option>Linden Hills</option>
+                            <option>NE</option>
+                            <option>South</option>
+                        </select>
+                        <button type="submit" class="btn btn-primary" id="search-Btn">Submit</button>
+                        <button type="submit" class="btn btn-primary" id="reset-Btn">Reset</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <br><br>
+
+    </div>
+
 
     <div class="container footer">
         <div class="row">
