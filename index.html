@@ -18,18 +18,87 @@
 
     <!--Scripts-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script type="text/javascript" src="app.js"></script>
 
     <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
-    
+
 
     <title>Home-In Homepage</title>
 
 </head>
 
 <body>
+    <!--NavBar-->
+    <nav class="navbar navbar-light bg-light">
+        <!--Hamburger Menu-->
+        <div class="pos-f-t">
+            <div class="collapse" id="navbarToggleExternalContent">
+                <div class="p-4">
+                    <h5 class="text-white h4">Collapsed content</h5>
+                    <span class="text-muted">Toggleable via the navbar brand.</span>
+                </div>
+            </div>
+            <nav class="navbar">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </nav>
+        </div>
 
-    
+        <!--Logo/Home Icon-->
+        <a class="navbar-brand" href="#">
+            <img src="assets/images/logo.png" height="100" class="center" alt="logo image">
+        </a>
+
+        <!--Favorites Icon-->
+        <a class="navbar-brand" href="#">
+            <img src="assets/images/heart.png" height="20" class="center" alt="logo image">
+        </a>
+    </nav>
+
+    <!--Main Content Section-->
+    <div class="container">
+
+        <!--Welcome Title-->
+        <div class="row">
+            <div class="col-sm-12">
+                <h1>Welcome to HomeIn</h1>
+            </div>
+        </div>
+
+        <!--Email Address Form-->
+        <div class="row">
+            <div class="col-sm-12">
+                <form>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Please enter your email:</label>
+                        <input type="email" class="form-control" placeholder="|">
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!--Text about what this app is about-->
+        <div class="row">
+            <div class="col-sm-12">
+                <p>We believe making a housing decision shouldn't consume all of your time and mental energy</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <p>Copyright &copy;</p>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!--Script-->
+    <script type="text/javascript" src="assets/javascript/app.js"></script>
 
 </body>
 
