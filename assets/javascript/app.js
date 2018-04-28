@@ -17,6 +17,7 @@ $(document).ready(function () {
 
     //Hides content until called
     $("#search-Form").hide();
+    $("#listings-Results").hide();
 
     // variable to reference Firebase
     var username = "";
@@ -33,6 +34,16 @@ $(document).ready(function () {
 
         //Unhides search form
         $("#search-Form").show();
+
+    }
+
+    function searchButton() {
+        //Hides search form
+        $("#email-Form").hide();
+        $("#search-Form").hide();
+
+        //Unhides search form
+        $("#listings-Results").show();
 
     }
 
@@ -65,7 +76,7 @@ $(document).ready(function () {
     $(".body").on("click", "#search-Btn", function(){
 
     // logic to store seach reuslts
-
+        searchButton();
 
 
     // add search results to the user's object
