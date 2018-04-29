@@ -35,17 +35,17 @@ $(document).ready(function () {
         //Unhides search form
         $("#search-Form").show();
 
-    }
+    };
 
     function searchButton() {
-        //Hides search form
+        //Hides search/email form
         $("#email-Form").hide();
         $("#search-Form").hide();
 
         //Unhides search form
         $("#listings-Results").show();
 
-    }
+    };
 
     // on click function on the username field to display submit button
     $("body").on("click", "#submit-Btn", function () {
@@ -58,7 +58,7 @@ $(document).ready(function () {
         // create new object for new user (with username only)
         var newUser = {
             username: username,
-        }
+        };
 
         // use .on (push) the data to the table above
         database.ref().push(newUser);
@@ -74,6 +74,7 @@ $(document).ready(function () {
     
     // on click function for the submit button on search page
     $(".body").on("click", "#search-Btn", function(){
+        event.preventDefault();
 
     // logic to store seach reuslts
         searchButton();
