@@ -73,7 +73,7 @@ $(document).ready(function () {
     });
     
     // on click function for the submit button on search page
-    $(".body").on("click", "#search-Btn", function(){
+    $("body").on("click", "#search-Btn", function (event) {
         event.preventDefault();
 
     // logic to store seach reuslts
