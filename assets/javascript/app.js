@@ -16,6 +16,8 @@ $(document).ready(function () {
     var lindenHillsWalkScore =['3530%20W%2046th%20St%20Minneapolis%20MN%2055410&lat=44.919926&lon=-93.325208', '4533%20Zenith%20Ave%20S%20Minneapolis%20MN%2055410&lat=44.920528&lon=-93.321147', '4432%20York%20Ave%20S%20Minneapolis%20MN%2055410&lat=44.922307&lon=-93.320487', '4329%20Zenith%20Ave%20S%20Minneapolis%20MN%2055410&lat=44.924226&lon=-93.321116', '3904%20Vincent%20Ave%20S%20Minneapolis%20MN%2055410&lat=44.932067&lon=-93.316709'];
     var lindenHillsZillow = ['3530+W+46th+St&citystatezip=55410', '4533+Zenith+Ave+S&citystatezip=55410', '4432+York+Ave+S&citystatezip=55410', '4329+Zenith+Ave+S&citystatezip=55410', '3904+Vincent+Ave+S&citystatezip=55410'];
 
+    
+
     function lookUpWalkScores (neighborhoodAddresses) {
         neighborhoodAddresses.forEach(function(addressString){
             var queryUrl = "http://api.walkscore.com/score?format=json&address=" + addressString +"&transit=1&bike=1&wsapikey=85e52a6723d3afe0406526039173d471"; 
@@ -24,18 +26,19 @@ $(document).ready(function () {
                 url : queryUrl,
                 method: 'GET'
             }).then(function(response){
-                console.log(response)
+                console.log(response);
             });
         });
 
     }
 
+
     function lookUpZillow (neighborhoodAddresses) {
-        neighborhoodAddresses.forEach(function (addressString){
+        neighborhoodAddresses.forEach(function(addressString){
             $.ajax({
                 url: 'https://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=X1-ZWz1gdhzffzvgr_3o1g1&address=' + addressString,
                 method: 'GET'
-            }).then(function(response) {
+            }).then(function(response){
                 var json = xmlToJson(response);
             
                 console.log(json);
@@ -47,6 +50,7 @@ $(document).ready(function () {
         if (options.crossDomain && jQuery.support.cors) {
             options.url = 'https://cors-anywhere.herokuapp.com/' + options.url;
         }
+
     });
     
     function xmlToJson(xml) {
@@ -221,8 +225,7 @@ $(document).ready(function () {
         console.log(userChoice);
         console.log("test");
 
-    $("body").on("click", "#search-Btn", function (event) {
-        event.preventDefault();
+    
 
     // on click function for the submit button on search page
     $("body").on("click", "#search-Btn", function (event) {
@@ -279,8 +282,7 @@ $(document).ready(function () {
         // else statement for clicking left arrow - move to the next listing
 
 
-     });
+ });
 
-//http://api.walkscore.com/score?format=json&address=4420%20Bryant%20Ave%20S%20Minneapolis%20MN%2055409&lat=44.900329&lon=-93.336496&transit=1&bike=1&wsapikey=85e52a6723d3afe0406526039173d471
+});
 
-//https://api.walkscore.com/score?format=json&address=44816%20Chowen%20Ave%20S%20Minneapolis%20MN%2055410&lat=44.915674&lon=-93.325529&transit=1&bike=1&wsapikey=85e52a6723d3afe0406526039173d471
