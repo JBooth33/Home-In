@@ -53,6 +53,24 @@ h1, h2, h3, p {
 
 
 
+/************* Listings Specifics **************/
+#listings-Results h3 {
+    font-weight: 700;
+}
+
+#listing-Address {
+    font-weight: 200;
+}
+
+.underlined {
+    margin-bottom: 0;
+}
+
+#listings-Results hr {
+    margin-top: 2px;
+    margin-bottom: 12px;
+}
+
 
 
 /************* Footer **************/

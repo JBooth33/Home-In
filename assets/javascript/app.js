@@ -120,17 +120,17 @@ $(document).ready(function () {
         //Unhides search form
         $("#search-Form").show();
 
-    }
+    };
 
     function searchButton() {
-        //Hides search form
+        //Hides search/email form
         $("#email-Form").hide();
         $("#search-Form").hide();
 
         //Unhides search form
         $("#listings-Results").show();
 
-    }
+    };
 
     // on click function on the username field to display submit button
     $("#submit-Btn").click(function(event) {
@@ -144,7 +144,7 @@ $(document).ready(function () {
         // create new object for new user (with username only)
         var newUser = {
             username: username,
-        }
+        };
 
         // use .on (push) the data to the table above
         database.ref().push(newUser);
@@ -159,6 +159,7 @@ $(document).ready(function () {
     });
     
     // on click function for the submit button on search page
+
    
     $("#search-Btn").click(function(event){
     //grab the value of selected neighborhood
@@ -166,6 +167,11 @@ $(document).ready(function () {
         event.preventDefault();
         console.log(userChoice);
         console.log("test");
+
+    $("body").on("click", "#search-Btn", function (event) {
+        event.preventDefault();
+
+
     // logic to store seach reuslts
         searchButton();
         lookUpWalkScores(uptownWalkScore);
