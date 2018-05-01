@@ -121,6 +121,7 @@
                 <form>
                     <div class="form-group">
                         <select id="city-Input" class="form-control">
+
                             <option selected value="0" id="city-Option1">Select a City</option>
                             <option value="1" id="city-Option2">Minneapolis</option>
                         </select>
@@ -131,6 +132,7 @@
                             <option value="3" id="neighborhood-Option4">Linden Hills</option>
                             <option value="4" id="neighborhood-Option5">NE</option>
                             <option value="5" id="neighborhood-Option6">South</option>
+
                         </select>
                         <button type="submit" class="btn btn-primary" id="search-Btn">Submit</button>
                     </div>
@@ -148,6 +150,9 @@
     <div class="container content-div" id="listings-Results">
         <div class="row" id="image-Carousel">
             <div class="col-sm-12">
+
+
+                <!--Photo Carosel - API to append images to this section-->
 
                 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                     <ol class="carousel-indicators">
@@ -172,20 +177,48 @@
             </div>
         </div>
 
-        <div class="row">
-            <div class="col-sm-12">
 
-                <!--Makes sure that the hr tag is the same width as the listing address-->
-                <div>
-                    <h2 id="listing-Address"></h2>
+        <div class="container">
+            <div class="row">
+                <!--Arrow Left-->
+                <div class="col-sm-1">
 
-                    <hr id="listing-Underline">
                 </div>
-
-                <h3>Details</h3>
             </div>
 
+            <!--Results from Listing-->
             <div class="row">
+
+                <div class="sm-10">
+                    <div class="row">
+                        <div class="col-sm-12">
+
+                            <!--Makes sure that the hr tag is the same width as the listing address-->
+                            <div>
+                                <h2 id="listing-Address"></h2>
+
+                                <hr id="listing-Underline">
+                            </div>
+
+                            <h3>Details</h3>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <p>Asking Price</p>
+                                <p>Zestimate</p>
+                                <p>Bedrooms</p>
+                                <p>Baths</p>
+                                <p>Year Built</p>
+                                <p>Mortage Est.</p>
+                            </div>
+                            <div class="col-sm-6">
+                                <p class="underlined" id="asking-Price">Placeholder</p>
+                                <hr>
+
+                                <p class="underlined" id="zestimate">Placeholder</p>
+                                <hr
+
                 <div class="col-sm-6">
                     <p>Asking Price</p>
                     <p>Zestimate</p>
@@ -195,38 +228,103 @@
                     <p>Mortage Est.</p>
                 </div>
                 <div class="col-sm-6">
-                    <p id="asking-Price"></p>
+
+
+                    <p class="underlined" id="asking-Price">Placeholder</p>
                     <hr>
 
-                    <p id="zestimate"></p>
+                    <p class="underlined" id="zestimate">Placeholder</p>
                     <hr>
 
-                    <p id="bedrooms"></p>
+                    <p class="underlined" id="bedrooms">Placerholder</p>
                     <hr>
 
-                    <p id="baths">
-                        </p>
-                        <hr>
+                    <p class="underlined" id="baths">Placeholder</p>
+                    <hr>
 
-                        <p id="year-Built"></p>
-                        <hr>
+                    <p class="underlined" id="year-Built">Placeholder</p>
+                    <hr>
 
-                        <p id="mortage-Est"></p>
-                        <hr>
+                    <p class="underlined" id="mortage-Est">Placeholder</p>
+                    <hr>
 
+                    <p class="underlined" id="bedrooms">Placerholder</p>
+                    <hr>
+
+                    <p class="underlined" id="baths">Placeholder</p>
+                    <hr>
+
+                    <p class="underlined" id="year-Built">Placeholder</p>
+                    <hr>
+
+                    <p class="underlined" id="mortage-Est">Placeholder</p>
+                    <hr>
+
+                  </div>
+              </div>
+          </div>
+
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h3>Walk Score</h3>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <h3 id="walkability-Score">90</h3>
+                        </div>
+
+                        <div class="col-sm-4">
+                            <h3 id="transit-Score">90</h3>
+                        </div>
+
+                        <div class="col-sm-4">
+                            <h3 id="bike-Score">90</h3>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <p>Higher Numbers Indicate Better Score</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-
-
 
         <div class="row">
             <div class="col-sm-12">
-
+                <h3>Walk Score</h3>
             </div>
         </div>
 
+        <div class="row">
+            <div class="col-sm-4">
+                <h3 id="walkability-Score">90</h3>
+            </div>
+
+            <div class="col-sm-4">
+                <h3 id="transit-Score">90</h3>
+            </div>
+
+            <div class="col-sm-4">
+                <h3 id="bike-Score">90</h3>
+
+            <!--Arrow Right-->
+            <div class="row">
+                    <div class="col-sm-1">
+                        <p>></p>
+                    </div>
+                </div>
+
+        <div class="row">
+            <div class="col-sm-12">
+                <p>Higher Numbers Indicate Better Score</p>
+            </div>
+        </div>
     </div>
+
+
 
 
     <div class="container footer">
