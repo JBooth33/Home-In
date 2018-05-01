@@ -15,11 +15,87 @@ $(document).ready(function () {
     //  variable to reference firebase 
     var database = firebase.database();
 
+    //Hides content until called
+    $("#search-Form").hide();
+    $("#listings-Results").hide();
+
     // variable to reference Firebase
     var username = "";
     var neighborhood = "";
     var street = "";
     var zip = "";
+
+
+    ///////////////////////Functions////////////////////////
+
+    function submitButton() {
+        //Hides email form
+        $("#email-Form").hide();
+
+        //Unhides search form
+        $("#search-Form").show();
+
+    };
+
+    function searchButton() {
+        //Hides email and listing search form
+        $("#email-Form").hide();
+        $("#listings-Results").hide();
+
+        //Unhides search form
+        $("#search-Form").show();
+
+    };
+
+    // function for clicking the search icon
+    function searchIcon(){
+        
+        //Hides search and listing form
+        $("#email-Form").hide();
+        $("#listings-Form").hide();
+
+        //Unhides search form
+        $("#search-Results").show();
+
+    }
+
+    // function for reset button on the search page
+    function reset(){
+        $('#city-Option1').val(0);
+        $('#neighborhood-Option1').val(0);
+  
+    }
+
+    // function for saving data in database after user clicking right arrow
+
+        // logic to store seach reuslts
+        city = $("city-Option").val();
+        neighborhood = $("neighborhood-Input").val();
+
+        // add search results to user's object
+        var newUser = {
+            username: username,
+            city: city,
+            neighborhood: neighborhood
+        }
+
+        // add search results to the user's object (child_added)
+
+
+
+    // function for moving to the next listing (for-loop)
+
+        // variables for the addresses (array)
+
+
+
+        // for-loop to loop through address array
+
+
+
+    ///////////////////////END OF Functions////////////////////////
+
+
 
     // on click function on the username field to display submit button
     $("body").on("click", "#submit-Btn", function () {
@@ -40,35 +116,34 @@ $(document).ready(function () {
         // empty the form everytime after user click submit
         $("#email-Input").val("");
 
-
         // transition for next page (div) - Seach page ----- .show and .replace functions
+        submitButton();
+
+    });
+
+    // on click function for the submit button on search page
+    $("body").on("click", "#search-Btn", function (event) {
+        event.preventDefault();
+        console.log(event);
+
+        // Capture the neigborhood user chose
+
+        
+
+        // transition for the Listing page
+        searchButton();
 
     });
     
-    // on click function for the submit button on search page
-    $(".body").on("click", "#search-Btn", function(){
+    ///////////////Functions for Listing page///////////////
 
-    // logic to store seach reuslts
+        // append results from API to html
+    
+        // if statement for clicking right arrow - save to Favorite page and move on to the next listing
+        
+        // call the firebase function from the "function" section to save data
 
+        // else statement for clicking left arrow - move to the next listing
 
-
-    // add search results to the user's object
-
-
-
-    // variables for the addresses (array)
-
-
-
-    // for-loop to loop through address array
-
-
-
-    // transition for the Listing page
-
-
-
-
-    });
 
 });

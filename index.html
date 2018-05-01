@@ -8,23 +8,31 @@
 
 
     <!--Styles-->
+    <!--Google Font-->
+    <link href="https://fonts.googleapis.com/css?family=Dosis:200,700" rel="stylesheet">
+
+    <!--Bootstrap-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
         crossorigin="anonymous">
+
+    <!--Linked Styles-->
     <link rel="stylesheet" type="text/css" href="assets/styles/reset.css">
     <link rel="stylesheet" type="text/css" href="assets/styles/style.css">
 
-    <link href="https://fonts.googleapis.com/css?family=Dosis:200,300,700" rel="stylesheet">
-
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg"
-        crossorigin="anonymous">
-
-
-
-
+    <!--Glyphicons-->
+    <link href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg"
+        rel="stylesheet" crossorigin="anonymous">
 
 
     <!--Scripts-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
 
     <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
 
@@ -35,10 +43,10 @@
 
 <body>
     <!--NavBar-->
-    <nav class="navbar navbar-light bg-light">
+    <nav class="navbar">
         <!--Search Menu-->
         <a class="navbar-brand" href="#">
-            <i class="fas fa-search"></i>
+            <i class="fas fa-search icon"></i>
         </a>
 
         <!--Logo/Home Icon-->
@@ -48,12 +56,12 @@
 
         <!--Favorites Icon-->
         <a class="navbar-brand" href="#">
-            <i class="far fa-heart"></i>
+            <i class="far fa-heart icon"></i>
         </a>
     </nav>
 
-    <!--Main Content Section-->
-    <div class="container">
+    <!--Email Form Section.  Loads with the page, will be hidden when submit is clicked-->
+    <div class="container content-div" id="email-Form">
 
         <!--Welcome Title-->
         <div class="row">
@@ -62,13 +70,18 @@
             </div>
         </div>
 
-        <!--Email Address Form-->
+        <br>
+        <br>
+
+        <!--Email Form-->
         <div class="row">
             <div class="col-sm-12">
                 <form>
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Please enter your email:</label>
+
+                        <p>Please enter your email:</p>
                         <input type="email" class="form-control" placeholder="Email" id="email-Input">
+
                     </div>
                     <button type="submit" class="btn btn-primary" id="submit-Btn">Submit</button>
                 </form>
@@ -86,7 +99,137 @@
         </div>
     </div>
 
-    <div class="container">
+
+
+
+    <!--Search FormSection.  Loads when the submit button is clicked.  Will be hidden when search is clicked-->
+    <div class="container content-div" id="search-Form">
+
+        <!--Welcome Title-->
+        <div class="row">
+            <div class="col-sm-12">
+                <h1>Search for Places</h1>
+            </div>
+        </div>
+
+        <br>
+        <br>
+
+        <!--Search Form-->
+        <div class="row">
+            <div class="col">
+                <form>
+                    <div class="form-group">
+                        <select id="city-Input" class="form-control">
+                            <option selected value="0" id="city-Option1">Select a City</option>
+                            <option value="1" id="city-Option2">Minneapolis</option>
+                        </select>
+                        <select id="neighborhood-Input" class="form-control">
+                            <option selected value="0" id="neighborhood-Option1">Neighborhood</option>
+                            <option value="1" id="neighborhood-Option2">Uptown</option>
+                            <option value="2" id="neighborhood-Option3">Downtown</option>
+                            <option value="3" id="neighborhood-Option4">Linden Hills</option>
+                            <option value="4" id="neighborhood-Option5">NE</option>
+                            <option value="5" id="neighborhood-Option6">South</option>
+                        </select>
+                        <button type="submit" class="btn btn-primary" id="search-Btn">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <br>
+        <br>
+
+    </div>
+
+
+    <!--API Results / Listings-->
+    <div class="container content-div" id="listings-Results">
+        <div class="row" id="image-Carousel">
+            <div class="col-sm-12">
+
+                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                    </ol>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img class="d-block w-100" src="assets/images/logo.png" alt="First slide">
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12">
+
+                <!--Makes sure that the hr tag is the same width as the listing address-->
+                <div>
+                    <h2 id="listing-Address"></h2>
+
+                    <hr id="listing-Underline">
+                </div>
+
+                <h3>Details</h3>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <p>Asking Price</p>
+                    <p>Zestimate</p>
+                    <p>Bedrooms</p>
+                    <p>Baths</p>
+                    <p>Year Built</p>
+                    <p>Mortage Est.</p>
+                </div>
+                <div class="col-sm-6">
+                    <p id="asking-Price"></p>
+                    <hr>
+
+                    <p id="zestimate"></p>
+                    <hr>
+
+                    <p id="bedrooms"></p>
+                    <hr>
+
+                    <p id="baths">
+                        </p>
+                        <hr>
+
+                        <p id="year-Built"></p>
+                        <hr>
+
+                        <p id="mortage-Est"></p>
+                        <hr>
+
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="row">
+            <div class="col-sm-12">
+
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="container footer">
         <div class="row">
             <div class="col-sm-12">
                 <p>Copyright &copy;</p>
@@ -100,6 +243,7 @@
 
     <!--Script-->
     <script type="text/javascript" src="assets/javascript/app.js"></script>
+
 
 </body>
 
