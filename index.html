@@ -121,16 +121,18 @@
                 <form>
                     <div class="form-group">
                         <select id="city-Input" class="form-control">
-                            <option selected>Select a City</option>
-                            <option>Minneapolis</option>
+
+                            <option selected value="0" id="city-Option1">Select a City</option>
+                            <option value="1" id="city-Option2">Minneapolis</option>
                         </select>
                         <select id="neighborhood-Input" class="form-control">
-                            <option selected>Neighborhood</option>
-                            <option>Uptown</option>
-                            <option>Downtown</option>
-                            <option>Linden Hills</option>
-                            <option>NE</option>
-                            <option>South</option>
+                            <option selected value="0" id="neighborhood-Option1">Neighborhood</option>
+                            <option value="1" id="neighborhood-Option2">Uptown</option>
+                            <option value="2" id="neighborhood-Option3">Downtown</option>
+                            <option value="3" id="neighborhood-Option4">Linden Hills</option>
+                            <option value="4" id="neighborhood-Option5">NE</option>
+                            <option value="5" id="neighborhood-Option6">South</option>
+
                         </select>
                         <button type="submit" class="btn btn-primary" id="search-Btn">Submit</button>
                     </div>
@@ -149,7 +151,9 @@
         <div class="row" id="image-Carousel">
             <div class="col-sm-12">
 
+
                 <!--Photo Carosel - API to append images to this section-->
+
                 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                     <ol class="carousel-indicators">
                         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -172,6 +176,7 @@
                 </div>
             </div>
         </div>
+
 
         <div class="container">
             <div class="row">
@@ -213,6 +218,7 @@
 
                                 <p class="underlined" id="zestimate">Placeholder</p>
                                 <hr
+
                 <div class="col-sm-6">
                     <p>Asking Price</p>
                     <p>Zestimate</p>
@@ -222,6 +228,8 @@
                     <p>Mortage Est.</p>
                 </div>
                 <div class="col-sm-6">
+
+
                     <p class="underlined" id="asking-Price">Placeholder</p>
                     <hr>
 
@@ -315,6 +323,7 @@
             </div>
         </div>
     </div>
+
 
 
 

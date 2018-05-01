@@ -123,14 +123,66 @@ $(document).ready(function () {
     };
 
     function searchButton() {
-        //Hides search/email form
+
+        //Hides email and listing search form
         $("#email-Form").hide();
-        $("#search-Form").hide();
+        $("#listings-Results").hide();
 
         //Unhides search form
-        $("#listings-Results").show();
+        $("#search-Form").show();
 
     };
+
+    // function for clicking the search icon
+    function searchIcon(){
+        
+        //Hides search and listing form
+        $("#email-Form").hide();
+        $("#listings-Form").hide();
+
+        //Unhides search form
+        $("#search-Results").show();
+
+    }
+
+    // function for reset button on the search page
+    function reset(){
+        $('#city-Option1').val(0);
+        $('#neighborhood-Option1').val(0);
+  
+    }
+
+    // function for saving data in database after user clicking right arrow
+
+        // logic to store seach reuslts
+        city = $("city-Option").val();
+        neighborhood = $("neighborhood-Input").val();
+
+        // add search results to user's object
+        var newUser = {
+            username: username,
+            city: city,
+            neighborhood: neighborhood
+        }
+
+        // add search results to the user's object (child_added)
+
+
+
+    // function for moving to the next listing (for-loop)
+
+        // variables for the addresses (array)
+
+
+
+        // for-loop to loop through address array
+
+
+
+    ///////////////////////END OF Functions////////////////////////
+
+
+
 
     // on click function on the username field to display submit button
     $("#submit-Btn").click(function(event) {
@@ -156,6 +208,7 @@ $(document).ready(function () {
         submitButton();
 
 
+
     });
     
     // on click function for the submit button on search page
@@ -171,6 +224,13 @@ $(document).ready(function () {
     $("body").on("click", "#search-Btn", function (event) {
         event.preventDefault();
 
+    // on click function for the submit button on search page
+    $("body").on("click", "#search-Btn", function (event) {
+        event.preventDefault();
+        console.log(event);
+
+
+        // Capture the neigborhood user chose
 
     // logic to store seach reuslts
         searchButton();
@@ -199,15 +259,25 @@ $(document).ready(function () {
     
 
     
-    
 
 
-    // transition for the Listing page
+        
 
-
-
+        // transition for the Listing page
+        searchButton();
 
     });
+    
+    ///////////////Functions for Listing page///////////////
+
+        // append results from API to html
+    
+        // if statement for clicking right arrow - save to Favorite page and move on to the next listing
+        
+        // call the firebase function from the "function" section to save data
+
+        // else statement for clicking left arrow - move to the next listing
+
 
      });
 
