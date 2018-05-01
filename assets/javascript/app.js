@@ -10,7 +10,7 @@ $(document).ready(function () {
     var northeastWalkScore = ['2915%20Lincoln%20St%20NE%20Minneapolis%20MN%2055418&lat=45.021121&lon=-93.237962', '3100%20Stinson%20St%20NE%20Minneapolis%20MN%2055418&lat=45.019969&lon=-93.238064', '2387%20Lincoln%20St%20NE%20Minneapolis%20MN%2055418&lat=45.019969&lon=-93.238064', '1708%20University%20Ave%20NE%20Minneapolis%20MN%2055413&lat=45.005639&lon=-93.263399', '2622%20Ulysses%20St%20NE%20Minneapolis%20MN%2055418&lat=45.015753&lon=-93.236225'];
     var northeastZillow = ['915+Lincoln+St+NE&citystatezip=55418', '3100+Stinson+Blvd&citystatezip=55418', '2837+Lincoln+St+NE&citystatezip=55418', '1708+University+Ave+NE&citystatezip=55413', '622+Ulysses+St+NE&citystatezip=55418'];
 
-    var southMinneapolisWalkScore = ['3832+43rd+Ave+S&citystatezip=55406', '4160+Burton+Ln&citystatezip=55406', '4718+38th+Ave+S&citystatezip=55406', '813+E+22nd+St&citystatezip=55404', '3420+24th+Ave+S&citystatezip=55406'];
+    var southMinneapolisWalkScore = ['3832%2043rd%20Ave%20S%20Minneapolis%20MN%2055406&lat=44.933477&lon=-93.211715', '4169%20Burton%20Ln%20Minneapolis%20MN%2055406&lat=44.927509&lon=-93.205753', '4718%2038th%20Ave%20S%20Minneapolis%20MN%2055406&lat=44.917449&lon=-93.218246', '813%20E%2022nd%20St%20Minneapolis%20MN%2055404&lat=44.960828&lon=-93.261732', '3420%2024th%20Ave%20S%20Minneapolis%20MN%2055406&lat=44.940571&lon=-93.237681'];
     var southMinneapolisZillow = ['3832+43rd+Ave+S&citystatezip=55406', '4160+Burton+Ln&citystatezip=55406', '4718+38th+Ave+S&citystatezip=55406', '813+E+22nd+St&citystatezip=55404', '3420+24th+Ave+S&citystatezip=55406'];
 
     var lindenHillsWalkScore =['3530%20W%2046th%20St%20Minneapolis%20MN%2055410&lat=44.919926&lon=-93.325208', '4533%20Zenith%20Ave%20S%20Minneapolis%20MN%2055410&lat=44.920528&lon=-93.321147', '4432%20York%20Ave%20S%20Minneapolis%20MN%2055410&lat=44.922307&lon=-93.320487', '4329%20Zenith%20Ave%20S%20Minneapolis%20MN%2055410&lat=44.924226&lon=-93.321116', '3904%20Vincent%20Ave%20S%20Minneapolis%20MN%2055410&lat=44.932067&lon=-93.316709'];
@@ -225,6 +225,24 @@ $(document).ready(function () {
         console.log(userChoice);
         console.log("test");
 
+        if (userChoice === 'Uptown') {
+            lookUpWalkScores(uptownWalkScore);
+            lookUpZillow(uptownZillow);
+        } else if (userChoice === "Downtown") {
+            lookUpWalkScores(downtownWalkScore);
+            lookUpZillow(downtownZillow);
+        } else if (userChoice === "Linden Hills") {
+            lookUpWalkScores(lindenHillsWalkScore);
+            lookUpZillow(lindenHillsZillow);
+        } else if (userChoice === "NE") {
+            lookUpWalkScores(northeastWalkScore);
+            lookUpZillow(northeastZillow);
+        } else if (userChoice = "South") {
+            lookUpWalkScores(southMinneapolisWalkScore);
+            lookUpZillow(southMinneapolisZillow);
+        }
+
+
     
 
     // on click function for the submit button on search page
@@ -237,7 +255,7 @@ $(document).ready(function () {
 
     // logic to store seach reuslts
         searchButton();
-        lookUpWalkScores(uptownWalkScore);
+        
 
     
 
@@ -253,7 +271,7 @@ $(document).ready(function () {
         
         
         
-        lookUpZillow(uptownZillow);
+        
 
 
     // for-loop to loop through address array
