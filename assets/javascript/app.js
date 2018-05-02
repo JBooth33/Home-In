@@ -1,6 +1,6 @@
 // document ready function
 $(document).ready(function () {
-   
+
     var uptownWalkScore = ['2885%20Knox%20Ave%20S%20APT%20403%20Minneapolis%20MN%2055408&lat=44.949983&lon=-93.304498', '4816%20Chowen%20Ave%20S%20Minneapolis%20MN%2055410&lat=44.915674&lon=-93.325529', '2400%20Girard%20Ave%20S%20APT%202%20Minneapolis%20MN%2055405&lat=44.959062&lon=-93.297329', '2520%20Colfax%20Ave%20S%20Minneapolis%20MN%2055405&lat=44.926232&lon=-93.291101', '4220%20Bryant%20Ave%20S%20Minneapolis%20MN%2055409&lat=44.900329&lon=-93.336496'];
     var uptownZillow = ['2885+Knox+Ave+S&citystatezip=55416', '4816+Chowen+Ave+S&citystatezip=55410', '2400+Girard+Ave+S+APT+2&citystatezip=55405', '2520+Colfax+Ave+S&citystatezip=55405', '4220+Bryant+Ave+S&citystatezip=55409'];
 
@@ -13,19 +13,19 @@ $(document).ready(function () {
     var southMinneapolisWalkScore = ['3832%2043rd%20Ave%20S%20Minneapolis%20MN%2055406&lat=44.933477&lon=-93.211715', '4169%20Burton%20Ln%20Minneapolis%20MN%2055406&lat=44.927509&lon=-93.205753', '4718%2038th%20Ave%20S%20Minneapolis%20MN%2055406&lat=44.917449&lon=-93.218246', '813%20E%2022nd%20St%20Minneapolis%20MN%2055404&lat=44.960828&lon=-93.261732', '3420%2024th%20Ave%20S%20Minneapolis%20MN%2055406&lat=44.940571&lon=-93.237681'];
     var southMinneapolisZillow = ['3832+43rd+Ave+S&citystatezip=55406', '4160+Burton+Ln&citystatezip=55406', '4718+38th+Ave+S&citystatezip=55406', '813+E+22nd+St&citystatezip=55404', '3420+24th+Ave+S&citystatezip=55406'];
 
-    var lindenHillsWalkScore =['3530%20W%2046th%20St%20Minneapolis%20MN%2055410&lat=44.919926&lon=-93.325208', '4533%20Zenith%20Ave%20S%20Minneapolis%20MN%2055410&lat=44.920528&lon=-93.321147', '4432%20York%20Ave%20S%20Minneapolis%20MN%2055410&lat=44.922307&lon=-93.320487', '4329%20Zenith%20Ave%20S%20Minneapolis%20MN%2055410&lat=44.924226&lon=-93.321116', '3904%20Vincent%20Ave%20S%20Minneapolis%20MN%2055410&lat=44.932067&lon=-93.316709'];
+    var lindenHillsWalkScore = ['3530%20W%2046th%20St%20Minneapolis%20MN%2055410&lat=44.919926&lon=-93.325208', '4533%20Zenith%20Ave%20S%20Minneapolis%20MN%2055410&lat=44.920528&lon=-93.321147', '4432%20York%20Ave%20S%20Minneapolis%20MN%2055410&lat=44.922307&lon=-93.320487', '4329%20Zenith%20Ave%20S%20Minneapolis%20MN%2055410&lat=44.924226&lon=-93.321116', '3904%20Vincent%20Ave%20S%20Minneapolis%20MN%2055410&lat=44.932067&lon=-93.316709'];
     var lindenHillsZillow = ['3530+W+46th+St&citystatezip=55410', '4533+Zenith+Ave+S&citystatezip=55410', '4432+York+Ave+S&citystatezip=55410', '4329+Zenith+Ave+S&citystatezip=55410', '3904+Vincent+Ave+S&citystatezip=55410'];
 
-    
 
-    function lookUpWalkScores (neighborhoodAddresses) {
-        neighborhoodAddresses.forEach(function(addressString){
-            var queryUrl = "http://api.walkscore.com/score?format=json&address=" + addressString +"&transit=1&bike=1&wsapikey=85e52a6723d3afe0406526039173d471"; 
-         
+
+    function lookUpWalkScores(neighborhoodAddresses) {
+        neighborhoodAddresses.forEach(function (addressString) {
+            var queryUrl = "http://api.walkscore.com/score?format=json&address=" + addressString + "&transit=1&bike=1&wsapikey=85e52a6723d3afe0406526039173d471";
+
             $.ajax({
-                url : queryUrl,
+                url: queryUrl,
                 method: 'GET'
-            }).then(function(response){
+            }).then(function (response) {
                 console.log(response);
             });
         });
@@ -33,35 +33,35 @@ $(document).ready(function () {
     }
 
 
-    function lookUpZillow (neighborhoodAddresses) {
-        neighborhoodAddresses.forEach(function(addressString){
+    function lookUpZillow(neighborhoodAddresses) {
+        neighborhoodAddresses.forEach(function (addressString) {
             $.ajax({
                 url: 'https://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=X1-ZWz1gdhzffzvgr_3o1g1&address=' + addressString,
                 method: 'GET'
-            }).then(function(response){
+            }).then(function (response) {
                 var json = xmlToJson(response);
-            
+
                 console.log(json);
             });
         });
     }
 
-    jQuery.ajaxPrefilter(function(options) {
+    jQuery.ajaxPrefilter(function (options) {
         if (options.crossDomain && jQuery.support.cors) {
             options.url = 'https://cors-anywhere.herokuapp.com/' + options.url;
         }
 
     });
-    
+
     function xmlToJson(xml) {
-            
+
         // Create the return object
         var obj = {};
-    
+
         if (xml.nodeType == 1) { // element
             // do attributes
             if (xml.attributes.length > 0) {
-            obj["@attributes"] = {};
+                obj["@attributes"] = {};
                 for (var j = 0; j < xml.attributes.length; j++) {
                     var attribute = xml.attributes.item(j);
                     obj["@attributes"][attribute.nodeName] = attribute.nodeValue;
@@ -70,16 +70,16 @@ $(document).ready(function () {
         } else if (xml.nodeType == 3) { // text
             obj = xml.nodeValue;
         }
-    
+
         // do children
         if (xml.hasChildNodes()) {
-            for(var i = 0; i < xml.childNodes.length; i++) {
+            for (var i = 0; i < xml.childNodes.length; i++) {
                 var item = xml.childNodes.item(i);
                 var nodeName = item.nodeName;
-                if (typeof(obj[nodeName]) == "undefined") {
+                if (typeof (obj[nodeName]) == "undefined") {
                     obj[nodeName] = xmlToJson(item);
                 } else {
-                    if (typeof(obj[nodeName].push) == "undefined") {
+                    if (typeof (obj[nodeName].push) == "undefined") {
                         var old = obj[nodeName];
                         obj[nodeName] = [];
                         obj[nodeName].push(old);
@@ -129,57 +129,55 @@ $(document).ready(function () {
     function searchButton() {
 
         //Hides email and listing search form
-        $("#email-Form").hide();
+        $("#search-Form").hide();
+
+        //Unhides search form
+        $("#listings-Results").show();
+
+    };
+
+    // function for clicking the search icon
+    function searchIcon() {
+
+        //Hides search and listing form
         $("#listings-Results").hide();
 
         //Unhides search form
         $("#search-Form").show();
 
-    };
-
-    // function for clicking the search icon
-    function searchIcon(){
-        
-        //Hides search and listing form
-        $("#email-Form").hide();
-        $("#listings-Form").hide();
-
-        //Unhides search form
-        $("#search-Results").show();
-
     }
 
     // function for reset button on the search page
-    function reset(){
+    function reset() {
         $('#city-Option1').val(0);
         $('#neighborhood-Option1').val(0);
-  
+
     }
 
     // function for saving data in database after user clicking right arrow
 
-        // logic to store seach reuslts
-        city = $("city-Option").val();
-        neighborhood = $("neighborhood-Input").val();
+    // logic to store seach reuslts
+    city = $("city-Option").val();
+    neighborhood = $("neighborhood-Input").val();
 
-        // add search results to user's object
-        var newUser = {
-            username: username,
-            city: city,
-            neighborhood: neighborhood
-        }
+    // add search results to user's object
+    var newUser = {
+        username: username,
+        city: city,
+        neighborhood: neighborhood
+    }
 
-        // add search results to the user's object (child_added)
+    // add search results to the user's object (child_added)
 
 
 
     // function for moving to the next listing (for-loop)
 
-        // variables for the addresses (array)
+    // variables for the addresses (array)
 
 
 
-        // for-loop to loop through address array
+    // for-loop to loop through address array
 
 
 
@@ -189,13 +187,13 @@ $(document).ready(function () {
 
 
     // on click function on the username field to display submit button
-    $("#submit-Btn").click(function(event) {
+    $("#submit-Btn").click(function (event) {
         event.preventDefault();
 
         // logic to store username
         username = $("#email-Input").val().trim();
         console.log(username);
-        
+
 
         // create new object for new user (with username only)
         var newUser = {
@@ -214,12 +212,16 @@ $(document).ready(function () {
 
 
     });
-    
+
     // on click function for the submit button on search page
 
-   
-    $("#search-Btn").click(function(event){
-    //grab the value of selected neighborhood
+
+    $("#search-Btn").click(function (event) {
+
+        // hides search from and shows listings results
+        searchButton();
+
+        //grab the value of selected neighborhood
         userChoice = $("#neighborhood-Input").val().trim();
         event.preventDefault();
         console.log(userChoice);
@@ -242,65 +244,59 @@ $(document).ready(function () {
             lookUpZillow(southMinneapolisZillow);
         }
 
+    });
 
-    
 
     // on click function for the submit button on search page
-    $("body").on("click", "#search-Btn", function (event) {
-        event.preventDefault();
-        console.log(event);
 
 
-        // Capture the neigborhood user chose
+    // Capture the neigborhood user chose
 
     // logic to store seach reuslts
-        searchButton();
-        
 
-    
+
+
 
     // add search results to the user's object
 
-    
+
 
     // variables for the addresses (array)
-    
+
     //Zillow Ajax
-        
-        
-        
-        
-        
-        
+
+
+
+
+
+
 
 
     // for-loop to loop through address array
 
-    
-    
-
-    
 
 
-        
 
-        // transition for the Listing page
-        searchButton();
 
-    });
-    
+
+
+
+
+    // transition for the Listing page
+
+
     ///////////////Functions for Listing page///////////////
 
-        // append results from API to html
-    
-        // if statement for clicking right arrow - save to Favorite page and move on to the next listing
-        
-        // call the firebase function from the "function" section to save data
+    // append results from API to html
 
-        // else statement for clicking left arrow - move to the next listing
+    // if statement for clicking right arrow - save to Favorite page and move on to the next listing
+
+    // call the firebase function from the "function" section to save data
+
+    // else statement for clicking left arrow - move to the next listing
 
 
- });
+
 
 });
 
