@@ -27,6 +27,35 @@ $(document).ready(function () {
                 method: 'GET'
             }).then(function (response) {
                 console.log(response);
+                
+                //Storing the Walkability Score Rating
+                var walkabilityScore = response.walkscore;
+
+                //Storing the Transit Score Rating
+                var transitScore = response.transit.score;
+
+                //Storing the Bike Score Rating
+                var bikeScore = response.bike.score;
+
+
+                //Dispalying Values in DOM
+                if (walkabilityScore == null) {
+                    $("#walkability-Score").html(0);
+                } else {
+                $("#walkability-Score").html(walkabilityScore);    
+                }
+
+                if (transitScore == null) {
+                    $("#transit-Score").html(0);
+                } else {
+                $("#transit-Score").html(transitScore);    
+                }
+
+                if (bikeScore == null) {
+                    $("#bike-Score").html(0);
+                } else {
+                $("#bike-Score").html(bikeScore);    
+                }
             });
         });
 
@@ -53,6 +82,7 @@ $(document).ready(function () {
 
     });
 
+    //Converts Zillow API to JSON format
     function xmlToJson(xml) {
 
         // Create the return object
@@ -90,6 +120,7 @@ $(document).ready(function () {
         }
         return obj;
     }
+
     // Initialize Firebase
     var config = {
         apiKey: "AIzaSyAWyixL7RlAkQetcPQ0oLmRY00JBARV1L8",
@@ -246,10 +277,6 @@ $(document).ready(function () {
 
     });
 
-
-    // on click function for the submit button on search page
-
-
     // Capture the neigborhood user chose
 
     // logic to store seach reuslts
@@ -263,11 +290,7 @@ $(document).ready(function () {
 
     // variables for the addresses (array)
 
-    //Zillow Ajax
-
-
-
-
+    // Zillow Ajax
 
 
 
