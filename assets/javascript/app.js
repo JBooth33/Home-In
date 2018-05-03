@@ -27,7 +27,7 @@ $(document).ready(function () {
                 method: 'GET'
             }).then(function (response) {
                 console.log(response);
-                
+
                 //Storing the Walkability Score Rating
                 var walkabilityScore = response.walkscore;
 
@@ -42,19 +42,19 @@ $(document).ready(function () {
                 if (walkabilityScore == null) {
                     $("#walkability-Score").html(0);
                 } else {
-                $("#walkability-Score").html(walkabilityScore);    
+                    $("#walkability-Score").html(walkabilityScore);
                 }
 
                 if (transitScore == null) {
                     $("#transit-Score").html(0);
                 } else {
-                $("#transit-Score").html(transitScore);    
+                    $("#transit-Score").html(transitScore);
                 }
 
                 if (bikeScore == null) {
                     $("#bike-Score").html(0);
                 } else {
-                $("#bike-Score").html(bikeScore);    
+                    $("#bike-Score").html(bikeScore);
                 }
             });
         });
@@ -71,6 +71,44 @@ $(document).ready(function () {
                 var json = xmlToJson(response);
 
                 console.log(json);
+
+                //Storing the Zestimate Rating (Goes in the Asking Price Spot) and displaying to DOM
+                var zestimateRating = json["SearchResults:searchresults"].response.results.result.zestimate.amount["#text"];
+
+                if (zestimateRating == null) {
+                    $("#zestimate").html("null");
+                } else {
+                    $("#zestimate").html(zestimateRating);
+                };
+
+                //Storing Bedroom Number and displaying to DOM
+                var bedroomsResult = json["SearchResults:searchresults"].response.results.result.bathrooms["#text"];
+
+                if (bedroomsResult == null) {
+                    $("#bedrooms").html("null");
+                } else {
+                    $("#bedrooms").html(bedroomsResult);
+                };
+
+
+                //Storing Baths Number and displaying to DOM
+                var bathsResult = json["SearchResults:searchresults"].response.results.result.bathrooms["#text"];
+
+                if (bathsResult == null) {
+                    $("#baths").html("null");
+                } else {
+                    $("#baths").html(bathsResult);
+                };
+
+                //Storing Year Built Number and displaying to DOM
+                var yearBuiltResult = json["SearchResults:searchresults"].response.results.result.yearBuilt["#text"];
+
+                if (yearBuiltResult == null) {
+                    $("#year-Built").html("null");
+                } else {
+                    $("#year-Built").html(yearBuiltResult);
+                };
+
             });
         });
     }
