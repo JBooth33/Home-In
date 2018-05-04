@@ -34,409 +34,30 @@ $(document).ready(function () {
         }
     }
 
-    var listings = {
-        neighborhoodUptown:{
-            address1: {
-                zillowDetails: {
-                    askingPrice:"",
-                    bedrooms: "",
-                    baths: "",
-                    yearBuilt: "",
-                    image: ""
-                },
-                walkScore: {
-                    walkability: "",
-                    bikeScore: "",
-                    transitScore: ""
-                }
-            },
-
-            address2: {
-                zillowDetails: {
-                    askingPrice:"",
-                    bedrooms: "",
-                    baths: "",
-                    yearBuilt: "",
-                    image: ""
-                },
-                walkScore: {
-                    walkability: "",
-                    bikeScore: "",
-                    transitScore: ""
-                }
-            },
-
-            address3: {
-                zillowDetails: {
-                    askingPrice:"",
-                    bedrooms: "",
-                    baths: "",
-                    yearBuilt: "",
-                    image: ""
-                },
-                walkScore: {
-                    walkability: "",
-                    bikeScore: "",
-                    transitScore: ""
-                }
-            },
-
-            address4: {
-                zillowDetails: {
-                    askingPrice:"",
-                    bedrooms: "",
-                    baths: "",
-                    yearBuilt: "",
-                    image: ""
-                },
-                walkScore: {
-                    walkability: "",
-                    bikeScore: "",
-                    transitScore: ""
-                }
-            },
-
-            address5: {
-                zillowDetails: {
-                    askingPrice:"",
-                    bedrooms: "",
-                    baths: "",
-                    yearBuilt: "",
-                    image: ""
-                },
-                walkScore: {
-                    walkability: "",
-                    bikeScore: "",
-                    transitScore: ""
-                }
-            },
-        },
-
-        neighborhoodDowntown:{
-            address1: {
-                zillowDetails: {
-                    askingPrice:"",
-                    bedrooms: "",
-                    baths: "",
-                    yearBuilt: "",
-                    image: ""
-                },
-                walkScore: {
-                    walkability: "",
-                    bikeScore: "",
-                    transitScore: ""
-                }
-            },
-
-            address2: {
-                zillowDetails: {
-                    askingPrice:"",
-                    bedrooms: "",
-                    baths: "",
-                    yearBuilt: "",
-                    image: ""
-                },
-                walkScore: {
-                    walkability: "",
-                    bikeScore: "",
-                    transitScore: ""
-                }
-            },
-
-            address3: {
-                zillowDetails: {
-                    askingPrice:"",
-                    bedrooms: "",
-                    baths: "",
-                    yearBuilt: "",
-                    image: ""
-                },
-                walkScore: {
-                    walkability: "",
-                    bikeScore: "",
-                    transitScore: ""
-                }
-            },
-
-            address4: {
-                zillowDetails: {
-                    askingPrice:"",
-                    bedrooms: "",
-                    baths: "",
-                    yearBuilt: "",
-                    image: ""
-                },
-                walkScore: {
-                    walkability: "",
-                    bikeScore: "",
-                    transitScore: ""
-                }
-            },
-
-            address5: {
-                zillowDetails: {
-                    askingPrice:"",
-                    bedrooms: "",
-                    baths: "",
-                    yearBuilt: "",
-                    image: ""
-                },
-                walkScore: {
-                    walkability: "",
-                    bikeScore: "",
-                    transitScore: ""
-                }
-            },
-        },
-
-        neighborhoodNorthEast:{
-            address1: {
-                zillowDetails: {
-                    askingPrice:"",
-                    bedrooms: "",
-                    baths: "",
-                    yearBuilt: "",
-                    image: ""
-                },
-                walkScore: {
-                    walkability: "",
-                    bikeScore: "",
-                    transitScore: ""
-                }
-            },
-
-            address2: {
-                zillowDetails: {
-                    askingPrice:"",
-                    bedrooms: "",
-                    baths: "",
-                    yearBuilt: "",
-                    image: ""
-                },
-                walkScore: {
-                    walkability: "",
-                    bikeScore: "",
-                    transitScore: ""
-                }
-            },
-
-            address3: {
-                zillowDetails: {
-                    askingPrice:"",
-                    bedrooms: "",
-                    baths: "",
-                    yearBuilt: "",
-                    image: ""
-                },
-                walkScore: {
-                    walkability: "",
-                    bikeScore: "",
-                    transitScore: ""
-                }
-            },
-
-            address4: {
-                zillowDetails: {
-                    askingPrice:"",
-                    bedrooms: "",
-                    baths: "",
-                    yearBuilt: "",
-                    image: ""
-                },
-                walkScore: {
-                    walkability: "",
-                    bikeScore: "",
-                    transitScore: ""
-                }
-            },
-
-            address5: {
-                zillowDetails: {
-                    askingPrice:"",
-                    bedrooms: "",
-                    baths: "",
-                    yearBuilt: "",
-                    image: ""
-                },
-                walkScore: {
-                    walkability: "",
-                    bikeScore: "",
-                    transitScore: ""
-                }
-            },
-        },
-
-        neighborhoodSouthMinneapolis:{
-            address1: {
-                zillowDetails: {
-                    askingPrice:"",
-                    bedrooms: "",
-                    baths: "",
-                    yearBuilt: "",
-                    image: ""
-                },
-                walkScore: {
-                    walkability: "",
-                    bikeScore: "",
-                    transitScore: ""
-                }
-            },
-
-            address2: {
-                zillowDetails: {
-                    askingPrice:"",
-                    bedrooms: "",
-                    baths: "",
-                    yearBuilt: "",
-                    image: ""
-                },
-                walkScore: {
-                    walkability: "",
-                    bikeScore: "",
-                    transitScore: ""
-                }
-            },
-
-            address3: {
-                zillowDetails: {
-                    askingPrice:"",
-                    bedrooms: "",
-                    baths: "",
-                    yearBuilt: "",
-                    image: ""
-                },
-                walkScore: {
-                    walkability: "",
-                    bikeScore: "",
-                    transitScore: ""
-                }
-            },
-
-            address4: {
-                zillowDetails: {
-                    askingPrice:"",
-                    bedrooms: "",
-                    baths: "",
-                    yearBuilt: "",
-                    image: ""
-                },
-                walkScore: {
-                    walkability: "",
-                    bikeScore: "",
-                    transitScore: ""
-                }
-            },
-
-            address5: {
-                zillowDetails: {
-                    askingPrice:"",
-                    bedrooms: "",
-                    baths: "",
-                    yearBuilt: "",
-                    image: ""
-                },
-                walkScore: {
-                    walkability: "",
-                    bikeScore: "",
-                    transitScore: ""
-                }
-            },
-        },
-
-        neighborhoodLindenHills:{
-            address1: {
-                zillowDetails: {
-                    askingPrice:"",
-                    bedrooms: "",
-                    baths: "",
-                    yearBuilt: "",
-                    image: ""
-                },
-                walkScore: {
-                    walkability: "",
-                    bikeScore: "",
-                    transitScore: ""
-                }
-            },
-
-            address2: {
-                zillowDetails: {
-                    askingPrice:"",
-                    bedrooms: "",
-                    baths: "",
-                    yearBuilt: "",
-                    image: ""
-                },
-                walkScore: {
-                    walkability: "",
-                    bikeScore: "",
-                    transitScore: ""
-                }
-            },
-
-            address3: {
-                zillowDetails: {
-                    askingPrice:"",
-                    bedrooms: "",
-                    baths: "",
-                    yearBuilt: "",
-                    image: ""
-                },
-                walkScore: {
-                    walkability: "",
-                    bikeScore: "",
-                    transitScore: ""
-                }
-            },
-
-            address4: {
-                zillowDetails: {
-                    askingPrice:"",
-                    bedrooms: "",
-                    baths: "",
-                    yearBuilt: "",
-                    image: ""
-                },
-                walkScore: {
-                    walkability: "",
-                    bikeScore: "",
-                    transitScore: ""
-                }
-            },
-
-            address5: {
-                zillowDetails: {
-                    askingPrice:"",
-                    bedrooms: "",
-                    baths: "",
-                    yearBuilt: "",
-                    image: ""
-                },
-                walkScore: {
-                    walkability: "",
-                    bikeScore: "",
-                    transitScore: ""
-                }
-            }
-        }
-    };
+    var listings = [];
+    var currentlyDisplayedListingIndex = null;
 
     // function displayListing() {
 
     // }
-    // function checkIfReady(neighborhoodAddresses) {
-    //     if (bedroomsResult && transitScore !== "null") {
-    //         console.log("success");//check if property has all the data is in listings
-    //     //get the address string
-    //     //use the address string to check if all the listing data is present
-    //     //if else to check if data is present
-    //     // if data is present, display the listing
-    //     displayListing(listings[addressString]);
-    //     }
-    // }
+
+    function checkIfReady() {
+        // Check if the first listing in the listings array is defined and has both zillowDetails and walkScore properties
+        //check if property has all the data is in listings
+        if (typeof listings[0] !== "undefined" && typeof listings[0].zillowDetails !== "undefined" && typeof listings[0].walkScore !== "undefined") {
+            
+            // if data is present, display the listing
+            // but only if it has NOT already been displayed
+            if (currentlyDisplayedListingIndex === null) {
+                console.log("About to display a listing! Full listings var is: ", listings);
+                currentlyDisplayedListingIndex = 0;
+                //displayListing(listings[0]);
+            }
+        }
+    }
 
     function lookUpWalkScores(neighborhoodAddresses) {
-        neighborhoodAddresses.forEach(function (addressString) {
+        neighborhoodAddresses.forEach(function (addressString, index) {
             var queryUrl = "http://api.walkscore.com/score?format=json&address=" + addressString + "&transit=1&bike=1&wsapikey=85e52a6723d3afe0406526039173d471";
 
             $.ajax({
@@ -444,24 +65,31 @@ $(document).ready(function () {
                 method: 'GET'
             }).then(function (response) {
                 console.log(response);
+                // Check if the property listing exists in listings
+                if (typeof listings[index] === "undefined") {
+                    listings[index] = {walkScore: {}};
+                } else if (typeof listings[index].walkScore === "undefined") {
+                    listings[index].walkScore = {};
+                }
 
                 //Storing the Walkability Score Rating
                 var walkabilityScore = response.walkscore;
                 
-                listings[addressString].walkScore.walkability = walkabilityScore;
+                listings[index].walkScore.walkability = walkabilityScore;
                 //Storing the Transit Score Rating
                 var transitScore = response.transit.score;
                 
-                listings[addressString].walkScore.transitScore= transitScore;
+                listings[index].walkScore.transitScore= transitScore;
                 
                 
 
                 //Storing the Bike Score Rating
                 var bikeScore = response.bike.score;
 
-                listings[addressString].walkScore.bikeScore = bikeScore;
+                listings[index].walkScore.bikeScore = bikeScore;
 
-                checkIfReady(neighborhoodAddresses);
+                //console.log("listings now", listings);
+                checkIfReady();
 
                 
 
@@ -490,19 +118,26 @@ $(document).ready(function () {
 
 
     function lookUpZillow(neighborhoodAddresses) {
-        neighborhoodAddresses.forEach(function (addressString) {
+        neighborhoodAddresses.forEach(function (addressString, index) {
             $.ajax({
                 url: 'https://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=X1-ZWz1gdhzffzvgr_3o1g1&address=' + addressString,
                 method: 'GET'
             }).then(function (response) {
                 var json = xmlToJson(response);
 
+                // Check if the property listing exists in listings
+                if (typeof listings[index] === "undefined") {
+                    listings[index] = {zillowDetails: {}};
+                } else if (typeof listings[index].zillowDetails === "undefined") {
+                    listings[index].zillowDetails = {};
+                }
+
                 console.log(json);
 
                 //Storing the Zestimate Rating (Goes in the Asking Price Spot) and displaying to DOM
                 var zestimateRating = json["SearchResults:searchresults"].response.results.result.zestimate.amount["#text"];
                 
-                listings[addressString].zillowDetails.askingPrice = zestimateRating;
+                listings[index].zillowDetails.askingPrice = zestimateRating;
                 
 
                 if (zestimateRating == null) {
@@ -514,7 +149,7 @@ $(document).ready(function () {
                 //Storing Bedroom Number and displaying to DOM
                 var bedroomsResult = json["SearchResults:searchresults"].response.results.result.bedrooms["#text"];
 
-                listings[addressString].zillowDetails.bedrooms = bedroomsResult;
+                listings[index].zillowDetails.bedrooms = bedroomsResult;
                 
                 if (bedroomsResult == null) {
                     $("#bedrooms").html("null");
@@ -526,7 +161,7 @@ $(document).ready(function () {
                 //Storing Baths Number and displaying to DOM
                 var bathsResult = json["SearchResults:searchresults"].response.results.result.bathrooms["#text"];
 
-                listings[addressString].zillowDetails.baths = bathsResult;
+                listings[index].zillowDetails.baths = bathsResult;
 
                 if (bathsResult == null) {
                     $("#baths").html("null");
@@ -537,13 +172,14 @@ $(document).ready(function () {
                 //Storing Year Built Number and displaying to DOM
                 var yearBuiltResult = json["SearchResults:searchresults"].response.results.result.yearBuilt["#text"];
                 
-                listings[addressString].zillowDetails.yearBuilt = yearBuiltResult;
+                listings[index].zillowDetails.yearBuilt = yearBuiltResult;
                 if (yearBuiltResult == null) {
                     $("#year-Built").html("null");
                 } else {
                     $("#year-Built").html(yearBuiltResult);
                 };
 
+                checkIfReady();
             });
         });
     }
