@@ -27,6 +27,10 @@ $(document).ready(function () {
     function displayListing() {
         indexNumber++;
 
+        var listingAddress = listings[indexNumber].zillowDetails.json["SearchResults:searchresults"].response.results.result.address.street["#text"];
+
+        $("#listing-Address").html(listingAddress);
+
 
         ////////// Walkscore Display to DOM /////////////
         //Storing the Walkability Score Rating
@@ -64,7 +68,7 @@ $(document).ready(function () {
         var zestimateRating = listings[indexNumber].zillowDetails.json["SearchResults:searchresults"].response.results.result.zestimate.amount["#text"];
 
 
-        if (zestimateRating == null) {
+        if (zestimateRating == "undefined") {
             $("#zestimate").html("null");
         } else {
             $("#zestimate").html(zestimateRating);
