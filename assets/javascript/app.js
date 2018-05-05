@@ -108,7 +108,6 @@ $(document).ready(function () {
         if (typeof listings[0] !== "undefined" && typeof listings[0].zillowDetails !== "undefined" && typeof listings[0].walkScore !== "undefined") {
 
 
-
             // if data is present, display the listing
 
             // but only if it has NOT already been displayed
@@ -137,7 +136,7 @@ $(document).ready(function () {
                 url: queryUrl,
                 method: 'GET'
             }).then(function (response) {
-                console.log(response);
+                //console.log(response);
                 // Check if the property listing exists in listings
 
                 if (typeof listings[index] === "undefined") {
