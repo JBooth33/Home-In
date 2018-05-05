@@ -160,7 +160,6 @@ $(document).ready(function () {
             }).then(function (response) {
                 var json = xmlToJson(response);
 
-
                 if (typeof listings[index] === "undefined") {
 
                     listings[index] = {
@@ -171,7 +170,6 @@ $(document).ready(function () {
 
 
                     listings[index].zillowDetails = { json };
-
                 };
 
                 checkIfReady();
@@ -252,6 +250,7 @@ $(document).ready(function () {
     ///////////////////////Functions////////////////////////
 
     function submitButton() {
+
         //Hides email form
         $("#email-Form").hide();
 
@@ -273,6 +272,8 @@ $(document).ready(function () {
     // function for clicking the search icon
     function searchIcon() {
 
+        indexNumber = 0;
+
         //Hides search and listing form
         $("#listings-Results").hide();
 
@@ -285,47 +286,47 @@ $(document).ready(function () {
 
 
     // function for saving data in database after user clicking right arrow
-    function storeFavorites(favorite) {
+    // function storeFavorites(favorite) {
 
-        // add search results to user's object (need to add API objects)
-        var favorite = {
-            username: username,
-            zillowDetails: {
-                askingPrice: listings[indexNumber].zillowDetails.json["SearchResults:searchresults"].response.results.result.zestimate.amount["#text"],
-                bedrooms: listings[indexNumber].zillowDetails.json["SearchResults:searchresults"].response.results.result.bedrooms["#text"],
-                baths: listings[indexNumber].zillowDetails.json["SearchResults:searchresults"].response.results.result.bathrooms["#text"],
-                yearBuilt: listings[indexNumber].zillowDetails.json["SearchResults:searchresults"].response.results.result.yearBuilt["#text"],
-            },
-            walkScore: {
-                walkability: listings[indexNumber].walkScore.response.walkscore,
-                bikeScore: listings[indexNumber].walkScore.response.bike.score,
-                transitScore: listings[indexNumber].walkScore.response.transitscore
-            }
-        };
+    //     // add search results to user's object (need to add API objects)
+    //     var favorite = {
+    //         username: username,
+    //         zillowDetails: {
+    //             askingPrice: listings[indexNumber].zillowDetails.json["SearchResults:searchresults"].response.results.result.zestimate.amount["#text"],
+    //             bedrooms: listings[indexNumber].zillowDetails.json["SearchResults:searchresults"].response.results.result.bedrooms["#text"],
+    //             baths: listings[indexNumber].zillowDetails.json["SearchResults:searchresults"].response.results.result.bathrooms["#text"],
+    //             yearBuilt: listings[indexNumber].zillowDetails.json["SearchResults:searchresults"].response.results.result.yearBuilt["#text"],
+    //         },
+    //         walkScore: {
+    //             walkability: listings[indexNumber].walkScore.response.walkscore,
+    //             bikeScore: listings[indexNumber].walkScore.response.bike.score,
+    //             transitScore: listings[indexNumber].walkScore.response.transitscore
+    //         }
+    //     };
 
-        // use .on (push) the data to the table above
-        database.ref(username).push(favorite);
+    //     // use .on (push) the data to the table above
+    //     database.ref(username).push(favorite);
 
-        // add search results to the user's object (child_added)
-        database.ref(username).on("child_added", function (childSnapshot, prevChildKey) {
-            console.log(childSnapshot);
+    //     // add search results to the user's object (child_added)
+    //     database.ref(username).on("child_added", function (childSnapshot, prevChildKey) {
+    //         console.log(childSnapshot);
 
-            // Store everything into a variable (need to add API object)
-            var username = childSnapshot.val().username;
-            var askingPrice = childSnapshot.val().askingPriceResult;
-            var bedrooms = childSnapshot.val().bedroomsResult;
-            var baths = childSnapshot.val().bathsResult;
-            var yearBuilt = childSnapshot.val().yearBuiltResult;
-            var walkability = childSnapshot.val().walkabilityResult;
-            var bikeScore = childSnapshot.val().bikeScoreResult;
-            var transitScore = childSnapshot.val().transitScoreResult;
+    //         // Store everything into a variable (need to add API object)
+    //         var username = childSnapshot.val().username;
+    //         var askingPrice = childSnapshot.val().askingPriceResult;
+    //         var bedrooms = childSnapshot.val().bedroomsResult;
+    //         var baths = childSnapshot.val().bathsResult;
+    //         var yearBuilt = childSnapshot.val().yearBuiltResult;
+    //         var walkability = childSnapshot.val().walkabilityResult;
+    //         var bikeScore = childSnapshot.val().bikeScoreResult;
+    //         var transitScore = childSnapshot.val().transitScoreResult;
 
-        });
+    //     });
 
-        var newUser = {
-            username: username,
-        };
-    };
+    //     var newUser = {
+    //         username: username,
+    //     };
+    // };
 
 
     ///////////////////////END OF Functions////////////////////////
@@ -368,8 +369,8 @@ $(document).ready(function () {
 
         //grab the value of selected neighborhood
         userChoice = $("#neighborhood-Input").val().trim();
+        console.log(userChoice)
         event.preventDefault();
-        console.log(userChoice);
 
         if (userChoice === 'Uptown') {
             lookUpWalkScores(uptownWalkScore);
@@ -401,6 +402,7 @@ $(document).ready(function () {
         var h = new Hammer(this);
         h.on("swiperight", function () {
             displayListing();
+            //storeFavorites();
         });
     });
 
@@ -409,7 +411,6 @@ $(document).ready(function () {
         var h = new Hammer(this);
         h.on("swipeleft", function () {
             displayListing();
-            storeFavorites();
         });
     });
 
