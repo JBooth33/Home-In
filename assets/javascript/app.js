@@ -17,10 +17,6 @@ $(document).ready(function () {
     var lindenHillsZillow = ['3530+W+46th+St&citystatezip=55410', '4533+Zenith+Ave+S&citystatezip=55410', '4432+York+Ave+S&citystatezip=55410', '4329+Zenith+Ave+S&citystatezip=55410', '3904+Vincent+Ave+S&citystatezip=55410'];
 
 
-
-
-
-
     var listings = [];
     var indexNumber = 0;
 
@@ -125,7 +121,8 @@ $(document).ready(function () {
 
         }
 
-    }
+
+    /////////// Walk Score API ///////////
 
     function lookUpWalkScores(neighborhoodAddresses) {
 
@@ -156,7 +153,7 @@ $(document).ready(function () {
 
     }
 
-
+    ////////// Zillow API ///////////
     function lookUpZillow(neighborhoodAddresses) {
         neighborhoodAddresses.forEach(function (addressString, index) {
             $.ajax({
@@ -173,6 +170,7 @@ $(document).ready(function () {
                     };
 
                 } else if (typeof listings[index].zillowDetails === "undefined") {
+
 
                     listings[index].zillowDetails = {json};
 
@@ -302,6 +300,7 @@ $(document).ready(function () {
     city = $("city-Option").val();
     neighborhood = $("neighborhood-Input").val();
 
+
     /// function for reset button on the search page
     // function reset() {
     //     $('#city-Option1').val(0);
@@ -368,12 +367,21 @@ $(document).ready(function () {
 
     // for-loop to loop through address array
 
+    // add search results to user's object
+    var newUser = {
+        username: username,
+        city: city,
+        neighborhood: neighborhood
+    };
+
+
 
 
     ///////////////////////END OF Functions////////////////////////
 
 
 
+    /////////////////////START OF Working Code ////////////////////
 
     // on click function on the username field to display submit button
     $("#submit-Btn").click(function (event) {
@@ -398,13 +406,10 @@ $(document).ready(function () {
         // transition for next page (div) - Seach page ----- .show and .replace functions
         submitButton();
 
-
-
     });
 
+
     // on click function for the submit button on search page
-
-
     $("#search-Btn").click(function (event) {
 
         // hides search from and shows listings results
@@ -435,48 +440,15 @@ $(document).ready(function () {
 
     });
 
-    // Capture the neigborhood user chose
+    // pushing to the favorites array on heart icon click 
+    // on click function for favoriting listings with faovirte icon 
+    $("#heart-Icon").click(function (event) {
+        storeFavorites();
+        document.write('Saved to your favorites!');
+    });
 
-    // logic to store seach reuslts
-
-
-
-
-    // add search results to the user's object
-
-
-
-    // variables for the addresses (array)
-
-    // Zillow Ajax
-
-
-
-
-    // for-loop to loop through address array
-
-
-
-
-
-
-
-
-
-    // transition for the Listing page
-
-
-    ///////////////Functions for Listing page///////////////
-
-    // append results from API to html
-
-    // if statement for clicking right arrow - save to Favorite page and move on to the next listing
-
-    // call the firebase function from the "function" section to save data
-
-    // else statement for clicking left arrow - move to the next listing
-
-
-
+    $("#search-Icon").click(function (event) {
+        searchIcon();
+    });
 
 });
