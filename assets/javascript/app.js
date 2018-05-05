@@ -370,7 +370,6 @@ $(document).ready(function () {
         userChoice = $("#neighborhood-Input").val().trim();
         event.preventDefault();
         console.log(userChoice);
-        console.log("test");
 
         if (userChoice === 'Uptown') {
             lookUpWalkScores(uptownWalkScore);
@@ -401,7 +400,7 @@ $(document).ready(function () {
         var $this = $(this);
         var h = new Hammer(this);
         h.on("swiperight", function () {
-            console.log("swipe right")
+            displayListing();
         });
     });
 
@@ -409,7 +408,8 @@ $(document).ready(function () {
         var $this = $(this);
         var h = new Hammer(this);
         h.on("swipeleft", function () {
-            console.log("swipe left")
+            displayListing();
+            storeFavorites();
         });
     });
 
