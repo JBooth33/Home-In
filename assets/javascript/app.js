@@ -222,6 +222,11 @@ $(document).ready(function () {
 
     }
 
+    /////// TESTING Function for Swipe Right ///////
+    function swipeRight() {
+        console.log("swipe right");
+    }
+
     // function for saving data in database after user clicking right arrow
 
     // logic to store seach reuslts
@@ -311,5 +316,27 @@ $(document).ready(function () {
         searchIcon();
     });
 
+
+
+    $('#listings-Results').each(function() {
+        var $this = $(this);
+        var h = new Hammer(this);
+        h.on("swiperight", function () {
+            console.log("swipe right")
+        });
+    });
+
+    $('#listings-Results').each(function() {
+        var $this = $(this);
+        var h = new Hammer(this);
+        h.on("swipeleft", function () {
+            console.log("swipe left")
+        });
+    });
+
+
 });
+
+
+
 
