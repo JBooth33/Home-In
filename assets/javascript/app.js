@@ -17,9 +17,116 @@ $(document).ready(function () {
     var lindenHillsZillow = ['3530+W+46th+St&citystatezip=55410', '4533+Zenith+Ave+S&citystatezip=55410', '4432+York+Ave+S&citystatezip=55410', '4329+Zenith+Ave+S&citystatezip=55410', '3904+Vincent+Ave+S&citystatezip=55410'];
 
 
+    var listings = [];
+    var indexNumber = 0;
+
+    console.log(listings);
+
+    var currentlyDisplayedListingIndex = null;
+
+    function displayListing() {
+        indexNumber++;
+
+
+        ////////// Walkscore Display to DOM /////////////
+        //Storing the Walkability Score Rating
+        var walkabilityScore = listings[indexNumber].walkScore.response.walkscore;
+
+        //Storing the Transit Score Rating
+        var transitScore = listings[indexNumber].walkScore.response.transitscore;
+
+        //Storing the Bike Score Rating
+        var bikeScore = listings[indexNumber].walkScore.response.bike.score;
+
+        checkIfReady();
+
+        // Dispalying Values in DOM
+        if (walkabilityScore == null) {
+            $("#walkability-Score").html(0);
+        } else {
+            $("#walkability-Score").html(walkabilityScore);
+        }
+
+        if (transitScore == null) {
+            $("#transit-Score").html(0);
+        } else {
+            $("#transit-Score").html(transitScore);
+        }
+
+        if (bikeScore == null) {
+            $("#bike-Score").html(0);
+        } else {
+            $("#bike-Score").html(bikeScore);
+        }
+
+        ////////// Zillow Display to DOM /////////////
+        //Storing the Zestimate Rating (Goes in the Asking Price Spot) and displaying to DOM
+        var zestimateRating = listings[indexNumber].zillowDetails.json["SearchResults:searchresults"].response.results.result.zestimate.amount["#text"];
+
+
+        if (zestimateRating == null) {
+            $("#zestimate").html("null");
+        } else {
+            $("#zestimate").html(zestimateRating);
+        };
+
+        //Storing Bedroom Number and displaying to DOM
+        var bedroomsResult = listings[indexNumber].zillowDetails.json["SearchResults:searchresults"].response.results.result.bedrooms["#text"];
+
+        if (bedroomsResult == null) {
+            $("#bedrooms").html("null");
+        } else {
+            $("#bedrooms").html(bedroomsResult);
+        };
+
+
+        //Storing Baths Number and displaying to DOM
+        var bathsResult = listings[indexNumber].zillowDetails.json["SearchResults:searchresults"].response.results.result.bathrooms["#text"];
+
+        if (bathsResult == null) {
+            $("#baths").html("null");
+        } else {
+            $("#baths").html(bathsResult);
+        };
+
+        //Storing Year Built Number and displaying to DOM
+        var yearBuiltResult = listings[indexNumber].zillowDetails.json["SearchResults:searchresults"].response.results.result.yearBuilt["#text"];
+        
+        if (yearBuiltResult == null) {
+            $("#year-Built").html("null");
+        } else {
+            $("#year-Built").html(yearBuiltResult);
+        };
+    };
+
+
+    function checkIfReady(neighborhoodAddresses) {
+        if (typeof listings[0] !== "undefined" && typeof listings[0].zillowDetails !== "undefined" && typeof listings[0].walkScore !== "undefined") {
+
+
+
+            // if data is present, display the listing
+
+            // but only if it has NOT already been displayed
+
+            if (currentlyDisplayedListingIndex === null) {
+
+                console.log("About to display a listing! Full listings var is: ", listings);
+
+                currentlyDisplayedListingIndex = 0;
+
+                displayListing(listings[0]);
+
+            }
+
+        }
+
+
     /////////// Walk Score API ///////////
+
     function lookUpWalkScores(neighborhoodAddresses) {
-        neighborhoodAddresses.forEach(function (addressString) {
+
+        neighborhoodAddresses.forEach(function (addressString, index) {
             var queryUrl = "http://api.walkscore.com/score?format=json&address=" + addressString + "&transit=1&bike=1&wsapikey=85e52a6723d3afe0406526039173d471";
 
             $.ajax({
@@ -27,86 +134,52 @@ $(document).ready(function () {
                 method: 'GET'
             }).then(function (response) {
                 console.log(response);
+                // Check if the property listing exists in listings
 
-                //Storing the Walkability Score Rating
-                var walkabilityScore = response.walkscore;
+                if (typeof listings[index] === "undefined") {
 
-                //Storing the Transit Score Rating
-                var transitScore = response.transit.score;
+                    listings[index] = {
+                        walkScore: {response}
+                    };
 
-                //Storing the Bike Score Rating
-                var bikeScore = response.bike.score;
+                } else if (typeof listings[index].walkScore === "undefined") {
 
+                    listings[index].walkScore = {response};
 
-                //Dispalying Values in DOM
-                if (walkabilityScore == null) {
-                    $("#walkability-Score").html(0);
-                } else {
-                    $("#walkability-Score").html(walkabilityScore);
-                }
-
-                if (transitScore == null) {
-                    $("#transit-Score").html(0);
-                } else {
-                    $("#transit-Score").html(transitScore);
-                }
-
-                if (bikeScore == null) {
-                    $("#bike-Score").html(0);
-                } else {
-                    $("#bike-Score").html(bikeScore);
                 }
             });
         });
+
 
     }
 
     ////////// Zillow API ///////////
     function lookUpZillow(neighborhoodAddresses) {
-        neighborhoodAddresses.forEach(function (addressString) {
+        neighborhoodAddresses.forEach(function (addressString, index) {
             $.ajax({
                 url: 'https://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=X1-ZWz1gdhzffzvgr_3o1g1&address=' + addressString,
                 method: 'GET'
             }).then(function (response) {
                 var json = xmlToJson(response);
 
+
+                if (typeof listings[index] === "undefined") {
+
+                    listings[index] = {
+                        zillowDetails: {json}
+                    };
+
+                } else if (typeof listings[index].zillowDetails === "undefined") {
+
+
+                    listings[index].zillowDetails = {json};
+
+                }
+
                 console.log(json);
 
-                //Storing the Zestimate Rating (Goes in the Asking Price Spot) and displaying to DOM
-                var zestimateRating = json["SearchResults:searchresults"].response.results.result.zestimate.amount["#text"];
 
-                if (zestimateRating == null) {
-                    $("#zestimate").html("null");
-                } else {
-                    $("#zestimate").html(zestimateRating);
-                };
-
-                //Storing Bedroom Number and displaying to DOM
-                var bedroomsResult = json["SearchResults:searchresults"].response.results.result.bathrooms["#text"];
-
-                if (bedroomsResult == null) {
-                    $("#bedrooms").html("null");
-                } else {
-                    $("#bedrooms").html(bedroomsResult);
-                };
-
-                //Storing Baths Number and displaying to DOM
-                var bathsResult = json["SearchResults:searchresults"].response.results.result.bathrooms["#text"];
-
-                if (bathsResult == null) {
-                    $("#baths").html("null");
-                } else {
-                    $("#baths").html(bathsResult);
-                };
-
-                //Storing Year Built Number and displaying to DOM
-                var yearBuiltResult = json["SearchResults:searchresults"].response.results.result.yearBuilt["#text"];
-
-                if (yearBuiltResult == null) {
-                    $("#year-Built").html("null");
-                } else {
-                    $("#year-Built").html(yearBuiltResult);
-                };
+                checkIfReady();
 
             });
         });
@@ -158,6 +231,8 @@ $(document).ready(function () {
         return obj;
     }
 
+
+
     // Initialize Firebase
     var config = {
         apiKey: "AIzaSyAWyixL7RlAkQetcPQ0oLmRY00JBARV1L8",
@@ -177,10 +252,7 @@ $(document).ready(function () {
     $("#listings-Results").hide();
 
     // variable to reference Firebase
-    var username = "";
-    var neighborhood = "";
-    var street = "";
-    var zip = "";
+
 
 
     ///////////////////////Functions////////////////////////
@@ -228,12 +300,80 @@ $(document).ready(function () {
     city = $("city-Option").val();
     neighborhood = $("neighborhood-Input").val();
 
+
+    /// function for reset button on the search page
+    // function reset() {
+    //     $('#city-Option1').val(0);
+    //     $('#neighborhood-Option1').val(0);
+
+    // }
+
+    // function for saving data in database after user clicking right arrow
+    // function storeFavorites(favorite) {
+
+    //     // add search results to user's object (need to add API objects)
+    //     var favorite = {
+    //         username: username,
+    //         zillowDetails: {
+    //             askingPrice: zestimateRating,
+    //             bedrooms: bedroomsResult,
+    //             baths: bathsResult,
+    //             yearBuilt: yearBuiltResult,
+    //         },
+    //         walkScore: {
+    //             walkability: walkabilityScore,
+    //             bikeScore: bikeScore,
+    //             transitScore: transitScore
+    //         }
+    //     }
+
+    //     // use .on (push) the data to the table above
+    //     database.ref(username).push(favorite);
+
+    //     // add search results to the user's object (child_added)
+    //     database.ref(username).on("child_added", function (childSnapshot, prevChildKey) {
+    //         console.log(childSnapshot);
+
+    //         // Store everything into a variable (need to add API object)
+    //         var username = childSnapshot.val().username;
+    //         var askingPrice = childSnapshot.val().askingPriceResult;
+    //         var bedrooms = childSnapshot.val().bedroomsResult;
+    //         var baths = childSnapshot.val().bathsResult;
+    //         var yearBuilt = childSnapshot.val().yearBuiltResult;
+    //         var walkability = childSnapshot.val().walkabilityResult;
+    //         var bikeScore = childSnapshot.val().bikeScoreResult;
+    //         var transitScore = childSnapshot.val().transitScoreResult;
+
+    //         // log favorites details
+    //         console.log (username);
+    //         console.log (askingPrice);
+    //         console.log (bedrooms);
+    //         console.log (baths);
+    //         console.log (yearBuilt);
+    //         console.log (walkability);
+    //         console.log (bikeScore);
+    //         console.log (transitScore);
+
+    //     }
+    // )}
+
+
+
+    // function for moving to the next listing (for-loop)
+
+    // variables for the addresses (array)
+
+
+
+    // for-loop to loop through address array
+
     // add search results to user's object
     var newUser = {
         username: username,
         city: city,
         neighborhood: neighborhood
     };
+
 
 
 
@@ -312,4 +452,3 @@ $(document).ready(function () {
     });
 
 });
-
