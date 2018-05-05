@@ -45,19 +45,19 @@ $(document).ready(function () {
             $("#walkability-Score").html(0);
         } else {
             $("#walkability-Score").html(walkabilityScore);
-        }
+        };
 
         if (transitScore == null) {
             $("#transit-Score").html(0);
         } else {
             $("#transit-Score").html(transitScore);
-        }
+        };
 
         if (bikeScore == null) {
             $("#bike-Score").html(0);
         } else {
             $("#bike-Score").html(bikeScore);
-        }
+        };
 
         ////////// Zillow Display to DOM /////////////
         //Storing the Zestimate Rating (Goes in the Asking Price Spot) and displaying to DOM
@@ -91,7 +91,7 @@ $(document).ready(function () {
 
         //Storing Year Built Number and displaying to DOM
         var yearBuiltResult = listings[indexNumber].zillowDetails.json["SearchResults:searchresults"].response.results.result.yearBuilt["#text"];
-        
+
         if (yearBuiltResult == null) {
             $("#year-Built").html("null");
         } else {
@@ -120,7 +120,7 @@ $(document).ready(function () {
             }
 
         }
-
+    };
 
     /////////// Walk Score API ///////////
 
@@ -139,19 +139,17 @@ $(document).ready(function () {
                 if (typeof listings[index] === "undefined") {
 
                     listings[index] = {
-                        walkScore: {response}
+                        walkScore: { response }
                     };
 
                 } else if (typeof listings[index].walkScore === "undefined") {
 
-                    listings[index].walkScore = {response};
+                    listings[index].walkScore = { response };
 
                 }
             });
         });
-
-
-    }
+    };
 
     ////////// Zillow API ///////////
     function lookUpZillow(neighborhoodAddresses) {
@@ -166,30 +164,26 @@ $(document).ready(function () {
                 if (typeof listings[index] === "undefined") {
 
                     listings[index] = {
-                        zillowDetails: {json}
+                        zillowDetails: { json }
                     };
 
                 } else if (typeof listings[index].zillowDetails === "undefined") {
 
 
-                    listings[index].zillowDetails = {json};
+                    listings[index].zillowDetails = { json };
 
-                }
-
-                console.log(json);
-
+                };
 
                 checkIfReady();
 
             });
         });
-    }
+    };
 
     jQuery.ajaxPrefilter(function (options) {
         if (options.crossDomain && jQuery.support.cors) {
             options.url = 'https://cors-anywhere.herokuapp.com/' + options.url;
         }
-
     });
 
     //Converts Zillow API to JSON format
@@ -209,7 +203,7 @@ $(document).ready(function () {
             }
         } else if (xml.nodeType == 3) { // text
             obj = xml.nodeValue;
-        }
+        };
 
         // do children
         if (xml.hasChildNodes()) {
@@ -227,9 +221,9 @@ $(document).ready(function () {
                     obj[nodeName].push(xmlToJson(item));
                 }
             }
-        }
+        };
         return obj;
-    }
+    };
 
 
 
@@ -285,96 +279,53 @@ $(document).ready(function () {
         //Unhides search form
         $("#search-Form").show();
 
-    }
-
-    // function for reset button on the search page
-    function reset() {
-        $('#city-Option1').val(0);
-        $('#neighborhood-Option1').val(0);
-
-    }
-
-    // function for saving data in database after user clicking right arrow
-
-    // logic to store seach reuslts
-    city = $("city-Option").val();
-    neighborhood = $("neighborhood-Input").val();
-
-
-    /// function for reset button on the search page
-    // function reset() {
-    //     $('#city-Option1').val(0);
-    //     $('#neighborhood-Option1').val(0);
-
-    // }
-
-    // function for saving data in database after user clicking right arrow
-    // function storeFavorites(favorite) {
-
-    //     // add search results to user's object (need to add API objects)
-    //     var favorite = {
-    //         username: username,
-    //         zillowDetails: {
-    //             askingPrice: zestimateRating,
-    //             bedrooms: bedroomsResult,
-    //             baths: bathsResult,
-    //             yearBuilt: yearBuiltResult,
-    //         },
-    //         walkScore: {
-    //             walkability: walkabilityScore,
-    //             bikeScore: bikeScore,
-    //             transitScore: transitScore
-    //         }
-    //     }
-
-    //     // use .on (push) the data to the table above
-    //     database.ref(username).push(favorite);
-
-    //     // add search results to the user's object (child_added)
-    //     database.ref(username).on("child_added", function (childSnapshot, prevChildKey) {
-    //         console.log(childSnapshot);
-
-    //         // Store everything into a variable (need to add API object)
-    //         var username = childSnapshot.val().username;
-    //         var askingPrice = childSnapshot.val().askingPriceResult;
-    //         var bedrooms = childSnapshot.val().bedroomsResult;
-    //         var baths = childSnapshot.val().bathsResult;
-    //         var yearBuilt = childSnapshot.val().yearBuiltResult;
-    //         var walkability = childSnapshot.val().walkabilityResult;
-    //         var bikeScore = childSnapshot.val().bikeScoreResult;
-    //         var transitScore = childSnapshot.val().transitScoreResult;
-
-    //         // log favorites details
-    //         console.log (username);
-    //         console.log (askingPrice);
-    //         console.log (bedrooms);
-    //         console.log (baths);
-    //         console.log (yearBuilt);
-    //         console.log (walkability);
-    //         console.log (bikeScore);
-    //         console.log (transitScore);
-
-    //     }
-    // )}
-
-
-
-    // function for moving to the next listing (for-loop)
-
-    // variables for the addresses (array)
-
-
-
-    // for-loop to loop through address array
-
-    // add search results to user's object
-    var newUser = {
-        username: username,
-        city: city,
-        neighborhood: neighborhood
     };
 
 
+
+
+    // function for saving data in database after user clicking right arrow
+    function storeFavorites(favorite) {
+
+        // add search results to user's object (need to add API objects)
+        var favorite = {
+            username: username,
+            zillowDetails: {
+                askingPrice: listings[indexNumber].zillowDetails.json["SearchResults:searchresults"].response.results.result.zestimate.amount["#text"],
+                bedrooms: listings[indexNumber].zillowDetails.json["SearchResults:searchresults"].response.results.result.bedrooms["#text"],
+                baths: listings[indexNumber].zillowDetails.json["SearchResults:searchresults"].response.results.result.bathrooms["#text"],
+                yearBuilt: listings[indexNumber].zillowDetails.json["SearchResults:searchresults"].response.results.result.yearBuilt["#text"],
+            },
+            walkScore: {
+                walkability: listings[indexNumber].walkScore.response.walkscore,
+                bikeScore: listings[indexNumber].walkScore.response.bike.score,
+                transitScore: listings[indexNumber].walkScore.response.transitscore
+            }
+        };
+
+        // use .on (push) the data to the table above
+        database.ref(username).push(favorite);
+
+        // add search results to the user's object (child_added)
+        database.ref(username).on("child_added", function (childSnapshot, prevChildKey) {
+            console.log(childSnapshot);
+
+            // Store everything into a variable (need to add API object)
+            var username = childSnapshot.val().username;
+            var askingPrice = childSnapshot.val().askingPriceResult;
+            var bedrooms = childSnapshot.val().bedroomsResult;
+            var baths = childSnapshot.val().bathsResult;
+            var yearBuilt = childSnapshot.val().yearBuiltResult;
+            var walkability = childSnapshot.val().walkabilityResult;
+            var bikeScore = childSnapshot.val().bikeScoreResult;
+            var transitScore = childSnapshot.val().transitScoreResult;
+
+        });
+
+        var newUser = {
+            username: username,
+        };
+    };
 
 
     ///////////////////////END OF Functions////////////////////////
@@ -440,15 +391,27 @@ $(document).ready(function () {
 
     });
 
-    // pushing to the favorites array on heart icon click 
-    // on click function for favoriting listings with faovirte icon 
-    $("#heart-Icon").click(function (event) {
-        storeFavorites();
-        document.write('Saved to your favorites!');
-    });
-
     $("#search-Icon").click(function (event) {
         searchIcon();
     });
+
+
+    //Hammer.js Swipe Functions
+    $('#listings-Results').each(function () {
+        var $this = $(this);
+        var h = new Hammer(this);
+        h.on("swiperight", function () {
+            console.log("swipe right")
+        });
+    });
+
+    $('#listings-Results').each(function () {
+        var $this = $(this);
+        var h = new Hammer(this);
+        h.on("swipeleft", function () {
+            console.log("swipe left")
+        });
+    });
+
 
 });
